@@ -11,10 +11,13 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import AuthService from "../api/AuthApi";
+import {useAuth} from "../auth/AuthProvider";
 
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const authContext = useAuth()
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -22,6 +25,12 @@ export default function SignIn() {
       username: data.get('username'),
       password: data.get('password'),
     });
+    AuthService.login(data.get('username'), data.get('password'))
+        .then((response) => {
+          authContext.setToken(response.token);
+        console.log(response);
+    });
+
   };
 
   return (

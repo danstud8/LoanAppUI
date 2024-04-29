@@ -11,20 +11,31 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import AuthService from "../api/AuthApi";
+import {useNavigate} from "react-router-dom";
+import {useAuth} from "../auth/AuthProvider";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+  const authContext = useAuth();
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
     const data = new FormData(event.currentTarget);
-    console.log({
-      firstName: data.get('firstName'),
-      username: data.get('username'),
-      password: data.get('password'),
-    });
+    try{
+      await AuthService.signup(data.get('firstName'), data.get('lastName'), data.get('username'), data.get('password'));
+      if(localStorage.getItem('token')){
+        authContext.setToken(localStorage.getItem('token'));
+        navigate('/');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
   };
 
   return (

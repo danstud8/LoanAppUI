@@ -9,18 +9,11 @@ const AuthProvider = ({ children }) => {
 
   // Function to set the authentication token
   const setToken = (newToken) => {
+    console.log("SET TOKEN !" + newToken)
     setToken_(newToken);
   };
 
-  useEffect(() => {
-    if (token) {
-      axios.defaults.headers.common["Authorization"] = "Bearer " + token;
-      localStorage.setItem('token',token);
-    } else {
-      delete axios.defaults.headers.common["Authorization"];
-      localStorage.removeItem('token')
-    }
-  }, [token]);
+
 
   // Memoized value of the authentication context
   const contextValue = useMemo(
