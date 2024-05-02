@@ -1,21 +1,39 @@
 import './App.css';
-import { useState } from 'react';
+import {useState} from 'react';
 import AuthProvider from './auth/AuthProvider';
-import Routes from './routes'
-
+import {Routes, Route, BrowserRouter} from 'react-router-dom'
+import HomePage from "./pages/HomePage";
+import ProtectedRoutes from "./routes/ProtectedRoutes";
+import Navbar from "./components/Navbar";
+import SignIn from "./pages/SignInPage";
+import SignUp from "./pages/SignUpPage";
+import LoansPage from "./pages/LoansPage";
+import SignOutPage from "./pages/SignOutPage";
+import AboutPage from "./pages/AboutPage";
 
 
 function App() {
 
-  const [loggedIn, setLoggedIn] = useState(true);
+    return (
+        <BrowserRouter>
+            <AuthProvider>
+                <Navbar/>
+                <Routes>
+                    <Route path="/" element={<ProtectedRoutes/>}>
+                        <Route path={"/loans"} element={<LoansPage/>}/>
+                        <Route path={"/signout"} element={<SignOutPage/>}/>
+                        <Route path={"/"} element={<HomePage/>}/>
+                    </Route>
 
-  return (
-    <AuthProvider>
-      <div>Salut !</div>
-       <Routes/>
-    </AuthProvider>
-  )
-    
+                    <Route path="/login" element={<SignIn/>}/>
+                    <Route path="/signup" element={<SignUp/>}/>
+                    <Route path="/about" element={<AboutPage/>}/>
+                </Routes>
+
+            </AuthProvider>
+        </BrowserRouter>
+    )
+
 }
 
 export default App;
