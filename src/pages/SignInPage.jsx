@@ -13,23 +13,35 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AuthService from "../api/AuthApi";
 import {useAuth} from "../auth/AuthProvider";
+import {useNavigate} from "react-router-dom";
 
 const defaultTheme = createTheme();
 
 export default function SignIn() {
   const authContext = useAuth()
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      username: data.get('username'),
-      password: data.get('password'),
-    });
-    AuthService.login(data.get('username'), data.get('password'))
-        .then((response) => {
-          authContext.setToken(response.token);
-        console.log(response);
-    });
+
+    try {
+      console.log("Before login");
+      const response = await AuthService.login(data.get('username'), data.get('password'))
+
+      console.log("After login");
+      if (localStorage.getItem('token') !== null) {
+        console.log("TOKEN2:" + response.token)
+        authContext.setToken(response.token);
+        navigate('/')
+      }
+    } catch (error) {
+      if (error.message === 'Incorrect username or password') {
+        console.log('Incorrect username or password. Please try again.');
+        alert("Incorect username or password... Please try again")
+      } else {
+        console.error('Error during login:', error);
+      }
+    }
 
   };
 

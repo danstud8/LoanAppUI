@@ -9,13 +9,19 @@ const login = async (username, password) => {
         const response = await axios.post(AUTH_BASE_PATH + '/login', {
             username,
             password,
-        }).then((response) => {
-            localStorage.setItem('token', response.data.token);
-            console.log(response);
-            return response.data;
         })
+        localStorage.setItem('token', response.data.token);
+        console.log(response);
+        return response.data;
     } catch (error) {
-        return error.data;
+        if (error.response.status === 403) {
+            // Incorrect credentials error
+            throw new Error('Incorrect username or password');
+        } else {
+            // Other errors
+            console.error('Error during login:', error);
+            throw error; // Rethrow the error to propagate it further
+        }
     }
 };
 

@@ -5,7 +5,7 @@ function SignOutPage(props) {
     let auth = useAuth();
     const signOut = () => {
         localStorage.removeItem('token');
-        auth.token = null
+        auth.setToken(null)
     }
 
     useEffect(() => {

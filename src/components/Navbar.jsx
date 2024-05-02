@@ -1,8 +1,6 @@
 import React from 'react';
 import '../index.css'
-import {useAuth} from "../auth/AuthProvider";
 import {NavLink} from "react-router-dom";
-import {Link} from "react-router-dom";
 
 function Navbar() {
 
@@ -11,24 +9,24 @@ function Navbar() {
             <NavLink className="navbar-title" to="/">UTM Credit</NavLink>
             <ul>
                 <li className="nav-item">
-                    <NavLink to="/">
-                        Home
+                    <NavLink to="/request">
+                        Credit Nou
                     </NavLink>
                 </li>
                 <li className="nav-item">
                     <NavLink to="/loans">
-                        Loans
+                        Creditele Mele
                     </NavLink>
                 </li>
 
                 <li className="nav-item">
                     <NavLink to="/about">
-                        About
+                        Despre UTM Credit
                     </NavLink>
                 </li>
                 <li className="nav-item">
                     <NavLink to="/signout">
-                        Sign Out
+                        Log Out
                     </NavLink>
                 </li>
 
