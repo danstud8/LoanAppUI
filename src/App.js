@@ -1,5 +1,4 @@
 import './App.css';
-import {useState} from 'react';
 import AuthProvider from './auth/AuthProvider';
 import {Routes, Route, BrowserRouter} from 'react-router-dom'
 import HomePage from "./pages/HomePage";
@@ -10,6 +9,7 @@ import SignUp from "./pages/SignUpPage";
 import LoansPage from "./pages/LoansPage";
 import SignOutPage from "./pages/SignOutPage";
 import AboutPage from "./pages/AboutPage";
+import NewLoanPage from "./pages/NewLoanPage";
 
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
                         <Route path={"/loans"} element={<LoansPage/>}/>
                         <Route path={"/signout"} element={<SignOutPage/>}/>
                         <Route path={"/"} element={<HomePage/>}/>
+                        <Route path={"/request"} element={<NewLoanPage/>}/>
                     </Route>
 
                     <Route path="/login" element={<SignIn/>}/>

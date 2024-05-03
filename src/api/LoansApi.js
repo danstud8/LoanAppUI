@@ -24,8 +24,22 @@ const fetchLoans = async () => {
     }
 }
 
+const createLoan = async (amount, duration) => {
+
+
+    const response = await axios.post(LOANS_BASE_PATH,{
+        amount,
+        duration,
+    }, {
+        headers: {
+            ' Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+}
+
 const loansService = {
     fetchLoans,
+    createLoan
 };
 
 export default loansService;
