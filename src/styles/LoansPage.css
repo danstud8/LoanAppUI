@@ -5,13 +5,17 @@
     display: flex;
     justify-content: center;
 }
+/* Style each div within header-title */
+.header-title > div {
+    padding: 5px;
+    text-align: center;
+}
 
 
 
 .header-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     padding: 1rem;
     color : #0d6548;
 }

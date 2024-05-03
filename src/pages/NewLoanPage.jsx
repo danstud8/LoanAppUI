@@ -8,11 +8,11 @@ const NewLoanPage = () => {
         duration: 0,
     });
 
-    const [loanPrice, setLoanPrice] = useState(0);
+    const [totalCost, setTotalCost] = useState(0);
 
     useEffect(
         () => {
-          setLoanPrice(parseFloat(formData.amount)*(1 + 0.07));
+          setTotalCost(parseFloat(formData.amount)*(1 + 0.07));
         },[formData.amount]
     )
     const validateInput = (formData) => {
@@ -35,7 +35,8 @@ const NewLoanPage = () => {
             alert("Ati introdus date gresite. Reintroduceti");
             return;
         }
-        loansService.createLoan(formData)
+        console.log("ITEMS: ",formData.amount, formData.totalCost, formData.duration)
+        loansService.createLoan(formData.amount, formData.totalCost, formData.duration)
             .then(() => alert("Creditul a fost creat cu succes! Asteptati Confirmarea"))
             .catch(() => alert("A aparut o eroare"))
 
@@ -66,7 +67,7 @@ const NewLoanPage = () => {
                     onChange={handleChange}
                     required
                 />
-                <p> Costul creditului cu aplicarea 7% comision: {!loanPrice ? 0 : loanPrice}</p>
+                <p> Costul creditului cu aplicarea 7% comision: {!totalCost ? 0 : totalCost}</p>
                 <button type="submit">Submit</button>
             </form>
         </div>

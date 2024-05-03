@@ -1,28 +1,12 @@
-
 .loan-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   padding: 1rem;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #0d6548;
 }
 
-.loan-item h3 {
-  margin: 0;
+/* Style each .loan-item-body */
+.loan-item-body {
+  padding: 5px;
+  text-align: center;
 }
-
-.loan-item p {
-  margin: 0;
-}
-
-
-
-
-
-
-
-
-
-
-
-

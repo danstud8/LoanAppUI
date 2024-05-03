@@ -1,9 +1,15 @@
 import React from 'react';
 import '../index.css'
 import {NavLink} from "react-router-dom";
+import {useAuth} from "../auth/AuthProvider";
 
 function Navbar() {
 
+    let auth = useAuth();
+    const signOut = () => {
+        localStorage.removeItem('token');
+        auth.setToken(null)
+    }
     return (
         <nav className="nav">
             <NavLink className="navbar-title" to="/">UTM Credit</NavLink>
@@ -25,7 +31,7 @@ function Navbar() {
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="/signout">
+                    <NavLink to="/" onClick={signOut}>
                         Log Out
                     </NavLink>
                 </li>
