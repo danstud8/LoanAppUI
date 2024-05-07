@@ -11,6 +11,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AuthService from "../api/AuthApi";
 import {useAuth} from "../auth/AuthProvider";
 import {useNavigate} from "react-router-dom";
+import {jwtDecode} from "jwt-decode";
 
 const defaultTheme = createTheme();
 
@@ -22,14 +23,16 @@ export default function SignIn() {
     const data = new FormData(event.currentTarget);
 
     try {
-      console.log("Before login");
       const response = await AuthService.login(data.get('username'), data.get('password'))
-
-      console.log("After login");
       if (localStorage.getItem('token') !== null) {
-        console.log("TOKEN2:" + response.token)
         authContext.setToken(response.token);
-        navigate('/')
+        const role = jwtDecode(localStorage.getItem('token')).role;
+        console.log("ROLE:" + role)
+        if (role === 'ADMIN') {
+          navigate('/admin')
+        } else {
+          navigate('/')
+        }
       }
     } catch (error) {
       if (error.message === 'Incorrect username or password') {

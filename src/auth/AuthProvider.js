@@ -7,7 +7,6 @@ const AuthProvider = ({ children }) => {
   const [token, setToken_] = useState(localStorage.getItem("token"));
 
   const setToken = (newToken) => {
-    console.log("SET TOKEN !" + newToken)
     setToken_(newToken);
   };
 

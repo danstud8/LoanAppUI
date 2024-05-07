@@ -35,8 +35,8 @@ const NewLoanPage = () => {
             alert("Ati introdus date gresite. Reintroduceti");
             return;
         }
-        console.log("ITEMS: ",formData.amount, formData.totalCost, formData.duration)
-        loansService.createLoan(formData.amount, formData.totalCost, formData.duration)
+        console.log("ITEMS: ",formData.amount, totalCost, formData.duration)
+        loansService.createLoan(formData.amount, totalCost, formData.duration)
             .then(() => alert("Creditul a fost creat cu succes! Asteptati Confirmarea"))
             .catch(() => alert("A aparut o eroare"))
 
@@ -68,7 +68,7 @@ const NewLoanPage = () => {
                     required
                 />
                 <p> Costul creditului cu aplicarea 7% comision: {!totalCost ? 0 : totalCost}</p>
-                <button type="submit">Submit</button>
+                <button type="submit">Trimite cerere</button>
             </form>
         </div>
     );

@@ -9,6 +9,7 @@ import SignUp from "./pages/SignUpPage";
 import LoansPage from "./pages/LoansPage";
 import AboutPage from "./pages/AboutPage";
 import NewLoanPage from "./pages/NewLoanPage";
+import AuthorizedRoute from "./routes/AuthorizedRoute";
 
 
 function App() {
@@ -18,10 +19,16 @@ function App() {
             <AuthProvider>
                 <Navbar/>
                 <Routes>
-                    <Route path="/" element={<ProtectedRoutes/>}>
+                    <Route path={"/"} element={<ProtectedRoutes/>}>
+                        <Route path={"admin"} element={<AuthorizedRoute/>}>
+                            <Route path={""} element={<HomePage/>}/>
+                            <Route path={"loans"} element={<LoansPage/>}/>
+                            <Route path={"request"} element={<NewLoanPage/>}/>
+                        </Route>
                         <Route path={"/"} element={<HomePage/>}/>
-                        <Route path={"/loans"} element={<LoansPage/>}/>
-                        <Route path={"/request"} element={<NewLoanPage/>}/>
+                        <Route path={"loans"} element={<LoansPage/>}/>
+                        <Route path={"request"} element={<NewLoanPage/>}/>
+                        //admin routes
                     </Route>
 
                     <Route path="/login" element={<SignIn/>}/>

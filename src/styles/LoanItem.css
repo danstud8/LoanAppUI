@@ -1,12 +1,37 @@
 .loan-item {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   padding: 1rem;
   border-bottom: 1px solid #0d6548;
+  width: 100%;
+}
+.loan-item-header {
+    padding: 5px;
+    text-align: center;
+    color: #15cd91;
 }
 
 /* Style each .loan-item-body */
 .loan-item-body {
   padding: 5px;
   text-align: center;
+}
+
+.loan-item-flex {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    color: #0d6548;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.buttonItem {
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px;
+    width: 20px;
+    height : 50px;
 }
