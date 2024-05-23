@@ -10,8 +10,7 @@ function Navbar() {
     let isAdmin = localStorage.getItem('token') &&
         jwtDecode(localStorage.getItem('token')).role === 'ADMIN';
 
-    let adminPath =  localStorage.getItem('token') &&
-        jwtDecode(localStorage.getItem('token')).role === 'ADMIN' ? "/admin" : "";
+    let adminPath =  isAdmin ? "/admin" : "";
 
     const signOut = () => {
         console.log(auth.token)

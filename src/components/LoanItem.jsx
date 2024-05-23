@@ -5,7 +5,6 @@ import CheckIcon from '@mui/icons-material/Check';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {ButtonGroup} from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
-import loansService from "../api/LoansApi";
 
 function LoanItem(props) {
 

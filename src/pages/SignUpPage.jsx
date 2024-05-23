@@ -50,7 +50,7 @@ export default function SignUp() {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            Inregistreaza-te
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -61,7 +61,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="firstName"
-                  label="First Name"
+                  label="Prenume"
                   autoFocus
                 />
               </Grid>
@@ -70,7 +70,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="lastName"
-                  label="Last Name"
+                  label="Nume"
                   name="lastName"
                   autoComplete="family-name"
                 />
@@ -89,7 +89,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="password"
-                  label="Password"
+                  label="Parola"
                   type="password"
                   id="password"
                   autoComplete="new-password"
@@ -102,7 +102,7 @@ export default function SignUp() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Inregistreaza-te
             </Button>
             <Link href="/login" variant="body2">
               Deja ai cont ? Logheaza-te.

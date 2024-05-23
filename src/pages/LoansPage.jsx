@@ -65,7 +65,7 @@ function LoansPage(props) {
 
     return (
         <>
-            {isAdmin ? <h3 className="header">Creditele tuturor clientilor.</h3> : <h3 className="header">Toate creditele mele.</h3>}
+            {isAdmin ? <h3 className="header">Creditele tuturor clientilor.</h3> : <h3 className="header">Toate creditele mele</h3>}
             <hr width="90%"></hr>
             <select
                 className="select-filter"

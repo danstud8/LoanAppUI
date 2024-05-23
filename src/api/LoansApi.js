@@ -49,6 +49,19 @@ const createLoan = async (amount, totalCost, duration) => {
     })
 }
 
+const createAdminLoan = async (amount, totalCost, duration, username) => {
+
+    await axios.post(LOANS_BASE_PATH + `/${username}`, {
+        "amount": amount,
+        "totalCost": totalCost,
+        "duration": duration,
+    }, {
+        headers: {
+            ' Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+}
+
 const acceptLoan = async (loanNumber) => {
     await axios.post(LOANS_BASE_PATH + '/status', null, {
         params : {
@@ -87,6 +100,7 @@ const loansService = {
     fetchLoans,
     fetchAllLoans,
     createLoan,
+    createAdminLoan,
     acceptLoan,
     rejectLoan,
     deleteLoan
