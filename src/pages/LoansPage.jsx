@@ -78,13 +78,14 @@ function LoansPage(props) {
                 <option value="Deschis">Deschise</option>
                 <option value="Respins">Respinse</option>
             </select>
-            <h3 className="header-title" style={isAdmin ? { marginRight: '138px' } : null}>
+            <h3 className="header-title" style={isAdmin ? { marginRight: '138px', gridTemplateColumns: `repeat(7, 1fr)` } : null}>
                 <div>Numarul Creditului</div>
                 <div>Suma</div>
                 <div>Costul Total</div>
                 <div>Status</div>
                 <div>Inceputul Creditului</div>
                 <div>Sfarsitul Creditului</div>
+                {isAdmin && <div>Utilizator</div>}
             </h3>
             <hr width="90%"></hr>
             {

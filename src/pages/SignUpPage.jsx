@@ -24,12 +24,18 @@ export default function SignUp() {
 
     const data = new FormData(event.currentTarget);
     try{
+      if(!data.get('firstName') || !data.get('lastName') || !data.get('username') || !data.get('password')){
+        console.log("SAL 1")
+        throw new Error('Te rog completeaza toate field-urile.');
+      }
+      console.log(data.get('firstName'))
       await AuthService.signup(data.get('firstName'), data.get('lastName'), data.get('username'), data.get('password'));
       if(localStorage.getItem('token')){
         authContext.setToken(localStorage.getItem('token'));
         navigate('/');
       }
     } catch (error) {
+      alert(error.message);
       console.log(error);
     }
 

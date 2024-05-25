@@ -10,6 +10,7 @@ import LoansPage from "./pages/LoansPage";
 import AboutPage from "./pages/AboutPage";
 import NewLoanPage from "./pages/NewLoanPage";
 import AuthorizedRoute from "./routes/AuthorizedRoute";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
                     <Route path="/signup" element={<SignUp/>}/>
                     <Route path="/about" element={<AboutPage/>}/>
                 </Routes>
-
+                <Footer/>
             </AuthProvider>
         </BrowserRouter>
     )

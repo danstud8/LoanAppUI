@@ -31,7 +31,7 @@ function LoanItem(props) {
 
     return (
         <div className="loan-item-flex">
-            <div className="loan-item">
+            <div className="loan-item" style={props.isAdmin ? {gridTemplateColumns: `repeat(7, 1fr)` } : null}>
                 <div className="loan-item-header">
                     <h3>{props.loan.loanNumber}</h3>
                 </div>
@@ -50,6 +50,11 @@ function LoanItem(props) {
                 <div className="loan-item-body">
                     <p>{formatDate(props.loan.endTime)}</p>
                 </div>
+                {props.isAdmin &&
+                <div className="loan-item-body">
+                    <p>{props.loan.username}</p>
+                </div>
+                }
             </div>
             {props.isAdmin &&
             <ButtonGroup>

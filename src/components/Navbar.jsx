@@ -19,7 +19,7 @@ function Navbar() {
     }
     return (
         <nav className="nav">
-            <NavLink className="navbar-title" to={adminPath + "/"}>UTM Credit</NavLink>
+            <NavLink className="navbar-title" to={adminPath + "/"}>Credit24/7</NavLink>
             <ul>
                 <li className="nav-item">
                     <NavLink to={adminPath + "/request"}>
@@ -34,7 +34,7 @@ function Navbar() {
 
                 <li className="nav-item">
                     <NavLink to={"/about"}>
-                        Despre UTM Credit
+                        Despre Credit24/7
                     </NavLink>
                 </li>
                 <li className="nav-item">
