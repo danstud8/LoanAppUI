@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../styles/LoanItem.css';
 import Button from "@mui/material/Button";
 import CheckIcon from '@mui/icons-material/Check';
